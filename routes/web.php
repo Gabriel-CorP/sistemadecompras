@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ArticuloController;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 /*
@@ -25,5 +26,9 @@ Route::get('/articulos/{articulo}/edit', 'App\Http\Controllers\ArticuloControlle
 Route::put('/articulos/{articulo}', 'App\Http\Controllers\ArticuloController@update')->name('articulos.update');
 Route::delete('/articulos/{articulo}', 'App\Http\Controllers\ArticuloController@destroy')->name('articulos.destroy');
 Auth::routes();
+Route::get('/cart', 'App\Http\Controllers\CartController@index')->name('carrito.index');
+Route::post('/cart-add', 'App\Http\Controllers\CartController@add')->name('cart.add');
+Route::get('/cart-checkout', 'App\Http\Controllers\CartController@checkout')->name('cart.checkout');
+Route::post('/cart-clear', 'App\Http\Controllers\CartController@clear')->name('cart.clear');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
