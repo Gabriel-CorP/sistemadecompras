@@ -44,4 +44,7 @@ class User extends Authenticatable
     public function articulos(){
         return $this->hasMany(Articulo::class);//relacion de 1 a muchos de usuario con articulos
     }
+    public function requesiciones(){
+        return $this->hasMany(Requesicion::class);//relacion de 1 a muchos de usuario con requesiciones
+    }
 }

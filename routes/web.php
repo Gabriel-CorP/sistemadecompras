@@ -30,5 +30,12 @@ Route::get('/cart', 'App\Http\Controllers\CartController@index')->name('carrito.
 Route::post('/cart-add', 'App\Http\Controllers\CartController@add')->name('cart.add');
 Route::get('/cart-checkout', 'App\Http\Controllers\CartController@checkout')->name('cart.checkout');
 Route::post('/cart-clear', 'App\Http\Controllers\CartController@clear')->name('cart.clear');
+Route::get('/procesarrequesicion', 'App\Http\Controllers\CartController@procesarrequesicion')->name('cart.procesarrequesicion');
+Route::get('/requesiciones', 'App\Http\Controllers\CartController@requesiciones')->name('cart.requesiciones');
+
+Route::get('/requesicion/{requesicion}/edit', 'App\Http\Controllers\CartController@edit')->name('cart.edit');
+Route::put('/requesicion/{requesicion}', 'App\Http\Controllers\CartController@update')->name('cart.update');
+Route::delete('/requesicion/{requesicion}', 'App\Http\Controllers\CartController@destroy')->name('cart.destroy');
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

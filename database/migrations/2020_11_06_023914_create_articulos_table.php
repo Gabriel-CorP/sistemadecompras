@@ -28,6 +28,23 @@ class CreateArticulosTable extends Migration
             $table->foreignId('user_id')->references('id')->on('users')->comment('el usuario que oferta el articulo');
             $table->timestamps();
         });
+        Schema::create('requesicions', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('elaborador_id')->references('id')->on('users')->comment('el usuario que realiza la requesicion');
+            //estado y el aprobador seran modificados durante la aprovacion de la requesicion.
+            $table->string('estado');
+            $table->string('comentario');
+            $table->bigInteger('aprobador_id');
+            $table->timestamps();
+        });
+        Schema::create('linea_de_requesicions', function (Blueprint $table) {
+            $table->id();
+            $table->string('nombre_articulo');
+            $table->string('unidad_articulo');
+            $table->double('cantidad_articulo');
+            $table->foreignId('requesicion_id')->references('id')->on('requesicions')->unsigned()->nullable()->comment('la requesicion a la que pertenecen');
+            $table->timestamps();
+        });
        
     }
 
